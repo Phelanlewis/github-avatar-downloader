@@ -4,9 +4,9 @@ var fs = require('fs');
 var GITHUB_USER = "Phelanlewis";
 var GITHUB_TOKEN = "463959a8da793e4f8e5160911c350e2b0ee6cb09";
 
-//var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
-
 function getRepoContributors(repoOwner, repoName, cb) {
+
+requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
   request.get('https://sytantris.github.io/http-examples')
          .on('error', function (err) {
