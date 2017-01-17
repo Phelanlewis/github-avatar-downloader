@@ -6,19 +6,21 @@ var GITHUB_TOKEN = "463959a8da793e4f8e5160911c350e2b0ee6cb09";
 
 function getRepoContributors(repoOwner, repoName, cb) {
 
-requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
+var requestURL = 'https://api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
-  request.get('https://sytantris.github.io/http-examples')
-         .on('error', function (err) {
-           throw err;
-         })
-         .on('response', function (response) {
-           console.log('Downloading Image...')
-           console.log('Response Status Code: ', response.statusCode);
-           console.log('Content Type: ', response.headers['content-type'])
-         })
-         .pipe(fs.createWriteStream('./avatar.jpg'));
-         console.log('Download complete!')
+var requestOptions = {
+   url: requestURL,
+   headers: {
+     'User-Agent': 'Github Avatar Project'
+   },
+   bearer: GITHUB_TOKEN
+ }
+
+ request(requestOptions, function (error, response, body) {
+ if (!error && response.statusCode == 200) {
+   console.log(body) 
+ }
+})
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
