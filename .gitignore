@@ -2,7 +2,8 @@
 logs
 *.log
 npm-debug.log*
-
+# dotenv
+.env
 # Runtime data
 pids
 *.pid
